@@ -35,7 +35,7 @@ public class LockedMe {
 				fileOps.mainInterface();
 				break;
 			case 3:
-				System.out.println("\nThank you for using the app!");
+				System.out.println("\nThank you !!!");
 				break;
 			default:
 				System.out.println("Invalid input.\n");
