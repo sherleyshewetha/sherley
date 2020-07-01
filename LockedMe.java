@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class LockedMe {
 	
-	private static String currDirectory = "F:\sherley\\";
+	private static String currDirectory = "F:\\sherley\\"; // Enter directory name of preference 
 	private static Scanner scanner = new Scanner( System.in );
 
 	public static void main(String[] args) {
@@ -59,12 +59,12 @@ public class LockedMe {
         String contents[] = directoryPath.list();
         System.out.println();
         System.out.println("LIST OF FILES:\n");
-        Arrays.sort(contents, Collator.getInstance());
+        Arrays.sort(contents, Collator.getInstance()); // Sorting
         if(contents.length!=0){
             for(int i=0; i<contents.length; i++) {
 
-                System.out.println("\t"+(i+1)+"-"+contents[i]);
-            }
+                System.out.println("\t"+(i+1)+"-"+contents[i]); // Lists filenames in ascending order 
+            
 
         }
         else {
@@ -119,7 +119,7 @@ public class LockedMe {
 			 String fileName;
 			 System.out.println("\nEnter the name for the file: ");
 			 fileName = scanner.nextLine();
-			 File newFile = new File(currDirectory + "/" + fileName);
+			 File newFile = new File(currDirectory + "/" + fileName); // Creates a new file
 			 String filePath = currDirectory + "/" + fileName;
 			 if(newFile.exists()) {
 				 System.out.println("\nFile name already exists, please try a different name.\n");
@@ -129,7 +129,7 @@ public class LockedMe {
 		               	System.out.println("\nEnter the contents of the file: ");
 		               	str= scanner.nextLine();
 		                BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-		                writer.write(str);
+		                writer.write(str); // Writes content into the file created 
 		                writer.close();
 				} catch (IOException e) {
 					System.out.println("\nSystem encountered an error, please try again.\n");
@@ -173,14 +173,14 @@ public class LockedMe {
 		 int check = 0;
 		 String fileName = scanner.nextLine();
 		 File directory = new File(currDirectory);
-		 File[] searchedFiles = directory.listFiles((thisFileDirectory, thisFileName) -> thisFileName.startsWith(fileName));
+		 File[] searchedFiles = directory.listFiles((thisFileDirectory, thisFileName) -> thisFileName.startsWith(fileName));  
 		 if(searchedFiles.length != 0)
 		 {
 			 for(File currFile: searchedFiles) {
-				 if(currFile.getName().equals(fileName)) {
+				 if(currFile.getName().equals(fileName)) { 
 					 check = 1;
 					 System.out.println("\nFile was found!\n");
-					 System.out.println("File Name: " + currFile.getName());
+					 System.out.println("File Name: " + currFile.getName()); // Displays user specified fileName 
 					 System.out.println("\nFile Content:");
 					 FileReader fr;
 					 try {
@@ -188,7 +188,7 @@ public class LockedMe {
 						BufferedReader br = new BufferedReader(fr);
 						String line;
 						while((line = br.readLine()) != null){
-						    System.out.println(line);
+						    System.out.println(line); // Displays content of the specified File if available 
 						}
 					 } catch (IOException e) {
 						 System.out.println("\nSystem encountered an error, please try again.\n");
