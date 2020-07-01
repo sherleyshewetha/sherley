@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileOperations {
-	private static String currDirectory = "F:\\sherley";
+	private static String currDirectory = "F:\\sherley";// Enter required directory path
 	private static Scanner scanner = new Scanner( System.in );
 	
 	public void displayAllFiles(){
@@ -21,7 +21,7 @@ public class FileOperations {
         if(contents.length!=0){
             for(int i=0; i<contents.length; i++) {
 
-                System.out.println("\t"+(i+1)+"-"+contents[i]);
+                System.out.println("\t"+(i+1)+"-"+contents[i]); // Listing Filenames in ascending order
             }
 
         }
@@ -49,17 +49,14 @@ public class FileOperations {
 					}
 			switch(choice) {
 			case 1:
-				// Skip the newline
 				scanner.nextLine();
 				addFile();
 				break;
 			case 2:
-				// Skip the newline
 				scanner.nextLine();
 				deleteFile();
 				break;
 			case 3:
-				// Skip the newline
 				scanner.nextLine();
 				searchFile();
 				break;
@@ -77,7 +74,7 @@ public class FileOperations {
 			 String fileName;
 			 System.out.println("\nEnter the name for the file: ");
 			 fileName = scanner.nextLine();
-			 File newFile = new File(currDirectory + "/" + fileName);
+			 File newFile = new File(currDirectory + "/" + fileName); // Creating new File in the given directory
 			 String filePath = currDirectory + "/" + fileName;
 			 if(newFile.exists()) {
 				 System.out.println("\nFile name already exists, please try a different name.\n");
@@ -86,8 +83,8 @@ public class FileOperations {
 		               	String str;
 		               	System.out.println("\nEnter the contents of the file: ");
 		               	str= scanner.nextLine();
-		                BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-		                writer.write(str);
+		                BufferedWriter writer = new BufferedWriter(new FileWriter(filePath)); 
+		                writer.write(str); // Writing content into the File as per user's choice
 		                writer.close();
 				} catch (IOException e) {
 					System.out.println("\nSystem encountered an error, please try again.\n");
@@ -123,7 +120,7 @@ public class FileOperations {
 		 System.out.println("\nEnter the file name to be searched: ");
 		 String fileName = scanner.nextLine();
 		 File directory = new File(currDirectory);
-		 File[] searchedFiles = directory.listFiles((thisFileDirectory, thisFileName) -> thisFileName.startsWith(fileName));
+		 File[] searchedFiles = directory.listFiles((thisFileDirectory, thisFileName) -> thisFileName.startsWith(fileName)); // Searching for the required File
 		 if(searchedFiles.length != 0)
 		 {
 			 System.out.println("\nFile was found!\n");
@@ -135,7 +132,7 @@ public class FileOperations {
 				BufferedReader br = new BufferedReader(fr);
 				String line;
 				while((line = br.readLine()) != null){
-				    System.out.println(line);
+				    System.out.println(line); // Displaying contents of required File
 				}
 			 } catch (IOException e) {
 				 System.out.println("\nSystem encountered an error, please try again.\n");
